@@ -1,5 +1,6 @@
 <?php require "controllerUserData.php"; ?>
 <?php 
+
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 if($email != false && $password != false){
@@ -66,23 +67,17 @@ $name = $fetch_info['name'];
     <a class="navbar-brand" href="#">Brand name</a>
     <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button>
     </nav>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-        </tr>
+<form method="post">
+	<input type="text" name="name" value="<?php echo $name ?>">
+	<input type="submit" value="Change">
+</form>
 
-       <?php
+<?php 
+if (isset($_POST['name'])) {
 
-            echo"<tr>";
-            echo "<td>".$name."<br><a href='nameChange.php?'>Change Name</a></td>";
-            echo "<td>".$email."</td>";
-            echo "<td>".$password."<br><a href='forgot-password.php?'>Change Password</a></td>";
+	$name = mysqli_real_escape_string($con, $_POST["name"]);
 
-        echo "</tr>";
-
-        ?>
-    </table>    
-</body>
-</html>
+	$sql = "UPDATE usertable SET name = '$name' WHERE email = '$email'";
+	header("Location:home.php");
+}
+ ?>
