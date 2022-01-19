@@ -20,14 +20,12 @@ if($email != false && $password != false){
 }else{
     header('Location: login-user.php');
 }
-
-$name = $fetch_info['name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title><?php echo $fetch_info['name'] ?> | Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
@@ -76,9 +74,10 @@ $name = $fetch_info['name'];
        <?php
 
             echo"<tr>";
-            echo "<td>".$name."<br><a href='nameChange.php?'>Change Name</a></td>";
+            echo "<td>".$fetch_info['name']."</td>";
             echo "<td>".$email."</td>";
-            echo "<td>".$password."<br><a href='forgot-password.php?'>Change Password</a></td>";
+            echo "<td>".$password."</td>";
+             echo "<td><a href='update.php?'>Update</a></td>";
 
         echo "</tr>";
 

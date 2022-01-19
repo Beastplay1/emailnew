@@ -7,7 +7,6 @@ $errors = array();
 
 //if user signup button
 if(isset($_POST['signup'])){
-    $id = mysqli_real_escape_string($con, $_POST['id']);
     $name = mysqli_real_escape_string($con, $_POST['name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
